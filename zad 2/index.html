@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Zad1 jsonToTable</title>
+
+    <!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+</head>
+
+<body>
+    <table id="jsonContent">
+        <tr>
+            <th>Age</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </tr>
+    </table>
+</body>
+<script>
+    let patients = [
+        {
+            "name": "Andrew",
+            "surname": "Kowalski",
+            "age": 23
+        },
+        {
+            "name": "Piotr",
+            "surname": "Nowak",
+            "age": 30
+        },
+        {
+            "name": "Anna",
+            "surname": "Malina",
+            "age": 21
+        }
+    ];
+
+    class Patient {
+        constructor(name, surname, age) {
+            this.name = name;
+            this.surname = surname;
+            this.age = age
+        }
+
+        fillInRow(row) {
+            row.insertCell(0).innerHTML = this.age
+            row.insertCell(1).innerHTML = this.name
+            row.insertCell(2).innerHTML = this.surname
+        }
+    }
+
+    class Table {
+        constructor(tableId) {
+            this.table = document.getElementById(tableId);
+        }
+
+        fillOutWith(patientsJsonArray) {
+            patientsJsonArray.forEach((patientJson) => {
+                let row = this.table.insertRow(-1);
+                let patient = new Patient(patientJson.name, patientJson.surname, patientJson.age)
+                patient.fillInRow(row)
+            })
+        }
+    }
+
+    let table = new Table("jsonContent")
+    table.fillOutWith(patients)
+
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Zad1 jsonToTable</title>
+
+    <!--<link rel="stylesheet" href="css/styles.css?v=1.0">-->
+</head>
+
+<body>
+    <table id="jsonContent">
+        <tr>
+            <th>Age</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </tr>
+    </table>
+</body>
+<script scr="data.js"></script>
+<script>
+var patients = [
+    {
+        "name": "Andrew",
+        "surname": "Kowalski",
+        "age": 23
+    },
+    {
+        "name": "Piotr",
+        "surname": "Nowak",
+        "age": 30
+    },
+    {
+        "name": "Anna",
+        "surname": "Malina",
+        "age": 21
+    }
+];
+
+    (function(){
+        var table = document.getElementById("jsonContent");
+    
+        patients.forEach(function(element) {
+            var row = table.insertRow(-1);
+            row.insertCell(0).innerHTML = element.age
+            row.insertCell(1).innerHTML = element.name
+            row.insertCell(2).innerHTML = element.surname
+        });
+    })();
+</script>
+
+</html>

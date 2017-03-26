@@ -50,6 +50,22 @@
     })();
     */
 
+    var Patient = (function(){
+        function Patient(name, surname, age) {
+            this.name = name;
+            this.surname = surname;
+            this.age = age;
+        }
+
+        Patient.prototype.fillInRow = function(row) {
+            row.insertCell(0).innerHTML = this.age;
+            row.insertCell(1).innerHTML = this.name;
+            row.insertCell(2).innerHTML = this.surname;
+        }
+
+        return Patient
+    })()
+
     var Table = (function () {
 
         function Table(id) {
@@ -60,12 +76,11 @@
             var self = this;
             patients.forEach(function (element) {
                 var row = self.table.insertRow(-1);
-                row.insertCell(0).innerHTML = element.age;
-                row.insertCell(1).innerHTML = element.name;
-                row.insertCell(2).innerHTML = element.surname;
+                var patient = new Patient(element.name, element.surname, element.age)
+                patient.fillInRow(row);
             });
         }
-        
+
         return Table;
     })()
 

@@ -51,6 +51,7 @@
     */
 
     var Table = (function () {
+
         function Table(id) {
             this.table = document.getElementById(id);
         }
@@ -64,6 +65,7 @@
                 row.insertCell(2).innerHTML = element.surname;
             });
         }
+        
         return Table;
     })()
 

@@ -17,55 +17,14 @@
         </tr>
     </table>
 </body>
+<script src="./Patient.js"></script>
+<script src="./Table.js"></script>
+<script src="./PatientsData.js"></script>
 <script>
-    let patients = [
-        {
-            "name": "Andrew",
-            "surname": "Kowalski",
-            "age": 23
-        },
-        {
-            "name": "Piotr",
-            "surname": "Nowak",
-            "age": 30
-        },
-        {
-            "name": "Anna",
-            "surname": "Malina",
-            "age": 21
-        }
-    ];
-
-    class Patient {
-        constructor(name, surname, age) {
-            this.name = name;
-            this.surname = surname;
-            this.age = age
-        }
-
-        fillInRow(row) {
-            row.insertCell(0).innerHTML = this.age
-            row.insertCell(1).innerHTML = this.name
-            row.insertCell(2).innerHTML = this.surname
-        }
+    window.onload = function () {
+        let table = new Table("jsonContent")
+        table.fillOutWith(patients)
     }
-
-    class Table {
-        constructor(tableId) {
-            this.table = document.getElementById(tableId);
-        }
-
-        fillOutWith(patientsJsonArray) {
-            patientsJsonArray.forEach((patientJson) => {
-                let row = this.table.insertRow(-1);
-                let patient = new Patient(patientJson.name, patientJson.surname, patientJson.age)
-                patient.fillInRow(row)
-            })
-        }
-    }
-
-    let table = new Table("jsonContent")
-    table.fillOutWith(patients)
 
 </script>
 

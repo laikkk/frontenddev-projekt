@@ -17,76 +17,13 @@
         </tr>
     </table>
 </body>
+<script src="./Patient.js"></script>
+<script src="./Table.js"></script>
+<script src="./PatientsData.js"></script>
 <script>
-    var patients = [
-        {
-            "name": "Andrew",
-            "surname": "Kowalski",
-            "age": 23
-        },
-        {
-            "name": "Piotr",
-            "surname": "Nowak",
-            "age": 30
-        },
-        {
-            "name": "Anna",
-            "surname": "Malina",
-            "age": 21
-        }
-    ];
-
-    /* stare podejscie 
-    (function(){
-        var table = document.getElementById("jsonContent");
-
-        patients.forEach(function(element) {
-            var row = table.insertRow(-1);
-            row.insertCell(0).innerHTML = element.age
-            row.insertCell(1).innerHTML = element.name
-            row.insertCell(2).innerHTML = element.surname
-        });
-    })();
-    */
-
-    var Patient = (function () {
-
-        function Patient(name, surname, age) {
-            this.name = name;
-            this.surname = surname;
-            this.age = age;
-        }
-
-        Patient.prototype.fillInRow = function (row) {
-            row.insertCell(0).innerHTML = this.age;
-            row.insertCell(1).innerHTML = this.name;
-            row.insertCell(2).innerHTML = this.surname;
-        }
-
-        return Patient
-    })()
-
-    var Table = (function () {
-
-        function Table(id) {
-            this.table = document.getElementById(id);
-        }
-
-        Table.prototype.loadPatients = function (patients) {
-            var self = this;
-            patients.forEach(function (element) {
-                var row = self.table.insertRow(-1);
-                var patient = new Patient(element.name, element.surname, element.age)
-                patient.fillInRow(row);
-            });
-        }
-
-        return Table;
-    })()
-
-    var table = new Table("jsonContent")
-    table.loadPatients(patients)
-
+    window.onload = function () {
+        var table = new Table("jsonContent")
+        table.loadPatients(patients)
+    }
 </script>
-
 </html>

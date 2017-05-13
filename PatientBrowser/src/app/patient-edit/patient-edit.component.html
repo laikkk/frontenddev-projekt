@@ -1,12 +1,2 @@
-<div *ngIf="patient">
-  <h1>Edit patient</h1>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="patient.name" placeholder="name" />
-  </div>
-  <div>
-    <label>surname: </label>
-    <input [(ngModel)]="patient.surname" placeholder="surname" />
-  </div>
-  <button (click)="okClicked()">ok</button>
-</div>
+<h1>Edit Patient</h1>
+<app-patient-form [patient]="patientToEdit" (onSubmitted)="passToMsgToParent($event)"></app-patient-form>

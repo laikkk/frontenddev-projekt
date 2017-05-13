@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 import { Patient } from '../../models/patient';
 
 @Component({
@@ -7,12 +8,16 @@ import { Patient } from '../../models/patient';
   styleUrls: ['./patient-edit.component.css']
 })
 export class PatientEditComponent implements OnInit {
-  @Input() patient: Patient;
+  @Input() patientToEdit: Patient;
   @Output() onOkButtonClicked: EventEmitter<Patient> = new EventEmitter();
-  constructor() { }
+
+  constructor() {
+  }
+
   ngOnInit() { }
 
-  okClicked() {
-    this.onOkButtonClicked.emit(this.patient);
+  passToMsgToParent(value: any) {
+    console.log(value);
+    this.onOkButtonClicked.emit(this.patientToEdit);
   }
 }

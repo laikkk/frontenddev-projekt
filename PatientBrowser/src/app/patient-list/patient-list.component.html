@@ -1,7 +1,13 @@
 <h1>Patient list</h1>
+<button (click)="showAddPatientSection = !showAddPatientSection">Add</button>
+<div *ngIf="showAddPatientSection">
+  <app-patient-form [header]="'Add Patient'" (onSubmitted)="addPatient($event)"></app-patient-form>
+</div>
+
+<p>Search <input type="text" [formControl]="searchControl"></p>
 <p *ngFor="let patient of patients">
   {{patient.name}} {{patient.surname}}
   <button (click)="selected(patient)">Edit</button>
 </p>
 
-<app-patient-edit [patient]="selectedPatient" (onOkButtonClicked)="removeSelectedPatient($event)"></app-patient-edit>
+<app-patient-form *ngIf="selectedPatient" [header]="'Edit Patient'" [patient]="selectedPatient" (onSubmitted)="removeSelectedPatient($event)"></app-patient-form>

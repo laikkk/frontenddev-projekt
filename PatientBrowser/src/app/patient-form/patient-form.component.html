@@ -1,0 +1,19 @@
+<h1>{{header}}</h1>
+<form [formGroup]="form">
+  <div>
+    <label>Name: </label>
+    <input type="text" [(ngModel)]="patient.name" [formControl]="nameControl" placeholder="Name" />
+    <div *ngIf="nameControl.dirty">
+      <div *ngIf="nameControl.hasError('required')">Name required</div>
+    </div>
+  </div>
+  <div>
+    <label>Surname: </label>
+    <input type="text" [(ngModel)]="patient.surname" [formControl]="surnameControl" placeholder="Surname">
+    <div *ngIf="surnameControl.dirty">
+      <div *ngIf="surnameControl.hasError('required')">Surname required</div>
+      <div *ngIf="surnameControl.hasError('minlength')">Surname must consist at least of 5 characters</div>
+    </div>
+  </div>
+  <button type="submit" (click)="onSubmit(form.value)" [disabled]="!form.valid">OK</button>
+</form>

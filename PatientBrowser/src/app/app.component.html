@@ -1,1 +1,27 @@
-<app-patient-list></app-patient-list>
+<div class="container-fluid">
+    <h1>Patient Browser</h1>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+        <button type="button" class="btn btn-default btn-lg" routerLink="/dashboard" routerLinkActive="active">
+            <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Dashboard
+        </button>
+        <button type="button" class="btn btn-default btn-lg" routerLink="/list" routerLinkActive="active">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> List
+        </button>
+        <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+</div>

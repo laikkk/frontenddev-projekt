@@ -1,4 +1,8 @@
 export class Patient {
+    static createFromJson(json): Patient {
+        return new Patient(json.name, json.surname);
+    }
+
     constructor(public name: string, public surname: string) { }
 }
 

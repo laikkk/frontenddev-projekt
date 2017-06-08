@@ -1,0 +1,23 @@
+<h2>Search</h2>
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search for Patient" [formControl]="searchField" />
+  <span class="input-group-btn">
+      <button class="btn btn-default" type="button" (click)="searchButtonTapped()">Search!</button>
+    </span>
+</div>
+<div>
+  <table class="table" *ngIf="patients?.length > 0">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients; let i = index;" (click)="setClickedRow(patient, i)" [class.active]="i == selectedRow">
+        <td>{{patient.name}}</td>
+        <td>{{patient.surname}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

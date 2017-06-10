@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { PatientService } from './services/patients.service';
 import { EditPatientService } from './services/editpatient.service';
-import { ConfirmDeactivateGuard } from './guards/editing-leave.guard';
+import { ConfirmLeaveListComponentGuard } from 'app/guards/confirm-leave-list-comp.guard';
 
 import { PatientListComponent } from 'app/components/list/subcomponents/patient-list/patient-list.component';
 import { PatientFormComponent } from 'app/components/shared/patient-form/patient-form.component';
@@ -40,7 +40,7 @@ import { AppComponent } from './app.component';
       {
         path: 'list',
         component: ListComponent,
-        canDeactivate: [ConfirmDeactivateGuard]
+        canDeactivate: [ConfirmLeaveListComponentGuard]
       },
       {
         path: '',
@@ -58,7 +58,7 @@ import { AppComponent } from './app.component';
     EditPatientService,
     PatientService,
     { provide: 'BASE_URL', useValue: 'http://localhost:3000' },
-    ConfirmDeactivateGuard
+    ConfirmLeaveListComponentGuard
   ],
   bootstrap: [AppComponent]
 })

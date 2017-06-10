@@ -4,7 +4,7 @@ import { EditPatientService } from './../services/editpatient.service';
 import { ListComponent } from 'app/components/list/list.component';
 
 @Injectable()
-export class ConfirmDeactivateGuard implements CanDeactivate<ListComponent> {
+export class ConfirmLeaveListComponentGuard implements CanDeactivate<ListComponent> {
 
     constructor(private editPatientService: EditPatientService) { }
 

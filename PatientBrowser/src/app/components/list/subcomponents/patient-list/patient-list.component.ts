@@ -1,11 +1,9 @@
-import { ListComponent } from './../list/list.component';
-import { EditPatientService } from './../services/editpatient.service';
 import { Component, OnInit, Host } from '@angular/core';
-import { Patient } from '../../models/patient';
 import { FormControl } from '@angular/forms';
 import 'rxjs/Rx';
-
-import { PatientService } from '../services/patients.service';
+import { Patient } from 'app/models/patient';
+import { PatientService } from 'app/services/patients.service';
+import { EditPatientService } from 'app/services/editpatient.service';
 
 @Component({
   selector: 'app-patient-list',

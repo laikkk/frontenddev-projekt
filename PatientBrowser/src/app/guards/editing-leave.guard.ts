@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { EditPatientService } from './../services/editpatient.service';
-import { ListComponent } from './../list/list.component';
 import { CanDeactivate } from '@angular/router';
+import { EditPatientService } from './../services/editpatient.service';
+import { ListComponent } from 'app/components/list/list.component';
 
 @Injectable()
 export class ConfirmDeactivateGuard implements CanDeactivate<ListComponent> {

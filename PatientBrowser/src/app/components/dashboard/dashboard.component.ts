@@ -14,7 +14,6 @@ export class DashboardComponent implements OnInit {
   }
 
   setPatient(patient: Patient) {
-    console.log(patient);
     this.patient = patient;
   }
 

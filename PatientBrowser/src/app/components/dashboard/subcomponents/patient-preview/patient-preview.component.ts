@@ -1,5 +1,5 @@
-import { Patient } from './../../models/patient';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Patient } from 'app/models/patient';
 
 @Component({
   selector: 'app-patient-preview',

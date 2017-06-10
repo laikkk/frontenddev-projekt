@@ -1,8 +1,8 @@
-import { PatientListComponent } from './../patient-list/patient-list.component';
-import { PatientService } from './../services/patients.service';
-import { Patient } from './../../models/patient';
-import { EditPatientService } from './../services/editpatient.service';
 import { Component, OnInit, Host, ViewChild } from '@angular/core';
+import { PatientListComponent } from 'app/components/list/subcomponents/patient-list/patient-list.component';
+import { EditPatientService } from 'app/services/editpatient.service';
+import { PatientService } from 'app/services/patients.service';
+import { Patient } from 'app/models/patient';
 
 @Component({
   selector: 'app-list',

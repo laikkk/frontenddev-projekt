@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
-
-import { Patient } from '../../models/patient';
+import { Patient } from 'app/models/patient';
 
 @Component({
   selector: 'app-patient-form',

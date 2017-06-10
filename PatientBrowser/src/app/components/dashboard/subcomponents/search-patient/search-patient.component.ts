@@ -1,7 +1,7 @@
-import { PatientService } from './../services/patients.service';
-import { Patient } from './../../models/patient';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Patient } from 'app/models/patient';
+import { PatientService } from 'app/services/patients.service';
 
 @Component({
   selector: 'app-search-patient',
@@ -10,8 +10,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class SearchPatientComponent implements OnInit {
   searchField: FormControl = new FormControl();
-  @Output()
-  onSelectPatient = new EventEmitter<Patient>();
+  @Output() onSelectPatient = new EventEmitter<Patient>();
   selectedRow: number;
   selectedPatient: Patient;
   patients: Patient[];

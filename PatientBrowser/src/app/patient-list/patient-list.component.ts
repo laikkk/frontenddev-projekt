@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ListComponent } from './../list/list.component';
+import { EditPatientService } from './../services/editpatient.service';
+import { Component, OnInit, Host } from '@angular/core';
 import { Patient } from '../../models/patient';
 import { FormControl } from '@angular/forms';
 import 'rxjs/Rx';
@@ -11,33 +13,31 @@ import { PatientService } from '../services/patients.service';
   styleUrls: ['./patient-list.component.css']
 })
 export class PatientListComponent implements OnInit {
-  searchControl = new FormControl();
   patients: Patient[] = [];
-  selectedPatient?: Patient;
-  showAddPatientSection = false;
 
-  constructor(private patientService: PatientService) {
-    // this.patients = this.patientService.search(null);
-    // this.searchControl.valueChanges
-    //   .debounceTime(400)
-    //   .distinctUntilChanged()
-    //   .subscribe(value => { this.patients = this.patientService.search(value); });
+  constructor(
+    private patientService: PatientService,
+    private editPatientService: EditPatientService) {
+    this.fetchAllPatients();
   }
 
   ngOnInit() { }
 
   selected(patient: Patient) {
-    this.selectedPatient = patient;
+    console.log('selected patient to edit');
+    this.editPatientService.patient = patient;
   }
 
-  removeSelectedPatient(patient: Patient) {
-    console.log(`Passing back patient: ${patient.name + ' ' + patient.surname}`);
-    this.selectedPatient = null;
+  delete(patient: Patient) {
+    this.patientService.delete(patient).subscribe((response) => {
+      console.log(`Patient deleted. Response: ${response}`);
+      this.fetchAllPatients();
+    }, (error) => {
+      console.log(`Problem occurred while deleting patient. Error: ${error}`);
+    });
   }
 
-  addPatient(patient: Patient) {
-    console.log(`Added patient: ${patient.name + ' ' + patient.surname}`);
-    // this.patientService.add(patient);
-    this.showAddPatientSection = false;
+  fetchAllPatients() {
+    this.patientService.getAll().subscribe((patients) => { this.patients = patients; });
   }
 }

@@ -1,42 +1,18 @@
-<h1>Patient list</h1>
-<button (click)="showAddPatientSection = !showAddPatientSection">Add</button>
-<div *ngIf="showAddPatientSection">
-  <app-patient-form [header]="'Add Patient'" (onSubmitted)="addPatient($event)"></app-patient-form>
-</div>
-
-<p>Search <input type="text" [formControl]="searchControl"></p>
-<p *ngFor="let patient of patients">
-  {{patient.name}} {{patient.surname}}
-  <button (click)="selected(patient)">Edit</button>
-</p>
-
-<app-patient-form *ngIf="selectedPatient" [header]="'Edit Patient'" [patient]="selectedPatient" (onSubmitted)="removeSelectedPatient($event)"></app-patient-form>
-
-<!--<h2>Basic Table</h2>
-<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
 <table class="table">
   <thead>
     <tr>
       <th>Firstname</th>
       <th>Lastname</th>
-      <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-    </tr>
-    <tr>
-      <td>Mary</td>
-      <td>Moe</td>
-      <td>mary@example.com</td>
-    </tr>
-    <tr>
-      <td>July</td>
-      <td>Dooley</td>
-      <td>july@example.com</td>
+    <tr *ngFor="let patient of patients">
+      <td>{{patient.name}}</td>
+      <td>{{patient.surname}}</td>
+      <td><button (click)="selected(patient)">Edit</button></td>
+      <td><button (click)="delete(patient)">Delete</button></td>
     </tr>
   </tbody>
-</table>-->
+</table>

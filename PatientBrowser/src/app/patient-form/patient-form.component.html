@@ -1,19 +1,25 @@
-<h1>{{header}}</h1>
+<h2>{{header}}</h2>
 <form [formGroup]="form">
-  <div>
-    <label>Name: </label>
-    <input type="text" [(ngModel)]="patient.name" [formControl]="nameControl" placeholder="Name" />
-    <div *ngIf="nameControl.dirty">
-      <div *ngIf="nameControl.hasError('required')">Name required</div>
-    </div>
+  <div class="form-group" [class.has-error]="nameControl.dirty && nameControl.hasError('required')">
+    <label class="control-label">Name: </label>
+    <input type="text" [(ngModel)]="patient.name" [formControl]="nameControl" class="form-control" placeholder="Name" />
+    <span *ngIf="nameControl.dirty && nameControl.hasError('required')" class="help-block">Name required</span>
   </div>
-  <div>
-    <label>Surname: </label>
-    <input type="text" [(ngModel)]="patient.surname" [formControl]="surnameControl" placeholder="Surname">
+  <div class="form-group" [class.has-error]="surnameControl.dirty && (surnameControl.hasError('required') || surnameControl.hasError('minlength'))">
+    <label class="control-label">Surname: </label>
+    <input type="text" [(ngModel)]="patient.surname" [formControl]="surnameControl" class="form-control" placeholder="Surname">
     <div *ngIf="surnameControl.dirty">
-      <div *ngIf="surnameControl.hasError('required')">Surname required</div>
-      <div *ngIf="surnameControl.hasError('minlength')">Surname must consist at least of 5 characters</div>
+      <span *ngIf="surnameControl.hasError('required')" class="help-block">Surname required</span>
+      <span *ngIf="surnameControl.hasError('minlength')" class="help-block">Surname must consist at least of 5 characters</span>
     </div>
   </div>
-  <button type="submit" (click)="onSubmit(form.value)" [disabled]="!form.valid">OK</button>
+  <div class="form-group" [class.has-error]="imageURLControl.dirty && imageURLControl.hasError('required')">
+    <label class="control-label">Name: </label>
+    <input type="text" [(ngModel)]="patient.imageURL" [formControl]="imageURLControl" class="form-control" placeholder="Image Url"
+    />
+    <span *ngIf="imageURLControl.dirty && imageURLControl.hasError('required')" class="help-block">Name required</span>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="onSubmit(form.value)" [disabled]="!form.valid">OK</button>
+  <button type="submit" class="btn btn-default" (click)="onCancel(form.value)">Cancel</button>
 </form>

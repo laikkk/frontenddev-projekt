@@ -1,6 +1,5 @@
-<!--<app-patient-list></app-patient-list>-->
 <div *ngIf="patient">
-    <img src="https://randomuser.me/api/portraits/men/46.jpg" class="img-circle center-block" />
+    <img src="{{patient.imageURL}}" class="img-circle center-block" />
     <form>
         <div class="form-group">
             <label class="control-label">Name</label>
@@ -11,8 +10,8 @@
             <p class=" form-control-static ">{{patient.surname}}</p>
         </div>
     </form>
-    <button type="button" (click)="clearPreview()">Hide</button>
+    <button type="button" (click)="clearPreview()" class="btn btn-default">Hide</button>
 </div>
 <div *ngIf="!patient">
-    <h2>Choose Patient from left panel</h2>
+    <h2>Choose Patient from search panel</h2>
 </div>
